@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baumans&family=Cuprum:wght@600&family=Fira+Sans+Condensed:wght@100&family=Montserrat:wght@100&family=Russo+One&family=Yanone+Kaffeesatz:wght@700&display=swap"
+          rel="stylesheet">
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="header-wrapper">
+        <nav class="nav-bar secondary-text">
+            <div class="nav-bar-wrapper">
+                <div class="nav-logo-wrapper">
+                    <img src="/images/logo.png" alt="Тіпа калькулятор" class="nav-logo">
+                    <p class="logo-text">Побудова амплітудно частотного спектру імпульсного сигналу</p>
+                </div>
+            </div>
+        </nav>
+        <div class="btn-wrapper">
+            <a class="border-button" id="btn">ОБРАХУВАТИ</a>
+        </div>
+        <div class="btn-wrapper">
+            <a class="border-button" href="https://drive.google.com/file/d/1F6EiUi4ILmjD3giylR4qRoPQbicYKEjf/view?usp=share_link">ТЕОРИТИЧНА ІНФОРМАЦІЯ</a>
+        </div>
+    </div>
+</header>
+<section class="section-outer">
+    <div class="section-inner">
+        <div class="form">
+            <div class="form-inner-wrapper">
+                <div class="input-box">
+                    <label class="form-label" for="Dx">Dx: </label>
+                    <input value="" type="number" id="Dx" class="form-input" placeholder="Введіть Dx:"
+                           required="required">
+                </div>
+                <div class="input-box">
+                    <label class="form-label" for="Amax">Amax: </label>
+                    <input value="" type="number" id="Amax" class="form-input" placeholder="Введіть Amax:"
+                           required="required">
+                </div>
+                <div class="input-box">
+                    <label class="form-label" for="fd1">fd1: </label>
+                    <input value="" type="number" id="fd1" class="form-input" placeholder="Введіть fd:"
+                           required="required">
+                </div>
+                <div class="input-box">
+                    <label class="form-label" for="m1">m1: </label>
+                    <input value="" type="number" id="m1" class="form-input" placeholder="Введіть m1:"
+                           required="required">
+                </div>
+                <div class="input-box">
+                    <label class="form-label" for="fd2">fd2: </label>
+                    <input value="" type="number" id="fd2" class="form-input" placeholder="Введіть fd2:"
+                           required="required">
+                </div>
+                <div class="input-box">
+                    <label class="form-label" for="m2">m2: </label>
+                    <input value="" type="number" id="m2" class="form-input" placeholder="Введіть m2"
+                           required="required">
+                </div>
+                <div class="input-box">
+                    <label class="form-label" for="TprAcp">Tpr_acp: </label>
+                    <input value="" type="number" id="TprAcp" class="form-input" placeholder="Введіть Tpr:"
+                           required="required">
+                </div>
+            </div>
+        </div>
+        <div class="instruction-wrapper">
+            <div class="info">
+                <input id="info__body_w0" class="info__switch" type="checkbox">
+                <label for="info__body_w0" class="formula-text, info__headline">Користуючись практичними даними, які свідчать,
+                    що порівняно просто реалізуються фільтри із \({f}_{cn} = {f}_{в}\) на октаву (тобто у два рази) з затуханням \({D}_{ср}\) > -100 ДБ
+                    (при цьому реалізується порядок фільтра R = 10, тобто, при 1 - Дб на порядок 10*R=100 ДБ), одержимо емпіричний вираз:
+                    \({f}_{d} >= {2f}_{в}(\frac{{D}_{x}}{{D}_{cc}})\)</label>
+                <div class="info__body">
+                    <div class="formulas_fd">
+                        <p class="formula-text">Задавшись значенням порядку аналогового фільтра R=10, що дасть значення
+                            \({D}_{сп}\) = 10 * 10 = 100 Дб, отримаємо для вхідних каналів першої групи ППІ:</p>
+                        <div class="formula_fd1 formula"></div>
+                        <p class="formula-text text-t1pr">При цьому час перетворення АЦП дорівнює \({Т}_{пр1}\) = \(\frac{1}{ {f}{d1}}\).<br>Для вхідних
+                            каналів другої групи ППІ:</p>
+                        <div class="formula_fd2 formula"></div>
+                        <p class="formula-text text-t2pr">При цьому час перетворення АЦП дорівнює \({Т}_{пр2}\) = \(\frac{1}{ {f}{d2}}\).</p>
+                        <p class="formula-text ">З урахуванням переключення між каналами за формулою \( {T}_{пр} = m({T}_{{пр}_{n}}+10\%*{T}_{{пр}_{n}})\)</p>
+                        <div class="formula-t1pr1 formula"></div>
+                        <div class="formula-t2pr2 formula"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="formula-text" id = "info_text_deltaT">Виходячи з параметрів n і fd вибираємо АЦП. Найбільш придатним для нашого прикладу є перетворювач AD674B, що
+                має значення та \({Т}_{пр}\) = 8 мкс.<br>Враховуючи, що для перетворення сигналу кожного каналу в код необхідно
+                виділяти додатковий час
+                \(Δt = 10t\)
+                , що забезпечує перемикання мультиплексора з
+                каналу на канал (для мікросхеми мультиплексора будемо вважати, що час
+                перемикання дорівнює __ мкс – 10% від часу перетворення АЦП)</p>
+            <div class="formula-real-tpr1 formula">\({T}_{пр1real} = m1({T}_{прАцп}* Δt)\)</div>
+            <div class="formula-real-tpr2 formula">\({T}_{пр2real} = m2({T}_{прАцп}* Δt)\)</div>
+        </div>
+    </div>
+</section>
+<footer>
+    <h3 class="footer-text">Produced by students 1SP-20B (Stepanchuk, Humeniuk, Potashna) Всі права захищено ©</h3>
+</footer>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script src="script.js" type="module"></script>
+</body>
